@@ -12,6 +12,7 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
+    "deploy": "gh-pages -d docs-dist",
     "dev": "dumi dev",
     "docs:build": "dumi build",
     "doctor": "father doctor",
@@ -71,5 +72,8 @@
   },
   "authors": [
     "wmy94827@163.com"
-  ]
+  ],
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }

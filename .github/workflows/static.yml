@@ -1,21 +1,23 @@
 name: github pages
 
 on:
+pull_request:
+    branches:
+      - main
   push:
     branches:
       - main # default branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - run: npm install
       # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
       - run: npm run docs:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 文档目录，如果是 react 模板需要修改为 docs-dist
-          publish_dir: ./docs-dist
+           branch: gh-pages # The branch the action should deploy to.
+          folder: docs-dist # The folder the action should deploy.
