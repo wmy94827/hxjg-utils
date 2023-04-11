@@ -1,20 +1,26 @@
-name: github pages
-
-on:
+name: Build and Deploy
+on: # 监听 main 分支上的 push 事件
   push:
     branches:
-      - main # default branch
-
+      - main
 jobs:
-  deploy:
-    runs-on: ubuntu-18.04
+  build-and-deploy:
+    runs-on: ubuntu-latest # 构建环境使用 ubuntu
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
-      - run: npm run docs:build 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
         with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs-dist
+          persist-credentials: false
+
+      - name: Install and Build # 下载依赖 打包项目
+        run: |
+          npm install
+          npm run build:docs
+
+      - name: Deploy # 将打包内容发布到 github page
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with: # 自定义环境变量
+          BRANCH: docs-dev # 这个是存放打包后的分支
+          FOLDER: docs-dist # 打包输出目录
+          REPOSITORY_NAME: wmy94827/hxjg-utils # 这是我的 github page 仓库，需要替换成你的
+          TARGET_FOLDER: / # 打包的文件将放到静态服务器 / 目录下, 一般不用改
