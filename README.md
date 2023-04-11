@@ -3,7 +3,11 @@
 [![NPM version](https://img.shields.io/npm/v/@hxjg/utils.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
 [![NPM downloads](http://img.shields.io/npm/dm/@hxjg/utils.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
 
-hx工具库
+hx 工具库
+
+## 文档地址
+
+https://wmy94827.github.io/hxjg-utils
 
 ## Usage
 
