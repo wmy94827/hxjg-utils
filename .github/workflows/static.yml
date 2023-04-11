@@ -7,14 +7,14 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - run: npm install
       # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
-      - run: npm run docs:build
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.0.0
+      - run: npm run docs:build 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs-dist
