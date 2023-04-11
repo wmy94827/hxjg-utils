@@ -1,7 +1,11 @@
 {
   "name": "@hxjg/utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "hx工具库",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmy94827/hxjg-utils.git"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
