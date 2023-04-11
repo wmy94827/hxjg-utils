@@ -12,6 +12,7 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
+    "buildPublish": "pnpm run build&&npm publish",
     "deploy": "gh-pages -d docs-dist",
     "dev": "dumi dev",
     "docs:build": "dumi build",
@@ -45,6 +46,9 @@
       "prettier --parser=typescript --write"
     ]
   },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -72,8 +76,5 @@
   },
   "authors": [
     "wmy94827@163.com"
-  ],
-  "dependencies": {
-    "gh-pages": "^5.0.0"
-  }
+  ]
 }
