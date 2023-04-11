@@ -16,5 +16,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-           branch: gh-pages # The branch the action should deploy to.
-          folder: docs-dist # The folder the action should deploy.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 文档目录，如果是 react 模板需要修改为 docs-dist
+          publish_dir: ./docs-dist
