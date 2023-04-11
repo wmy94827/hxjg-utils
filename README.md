@@ -1,7 +1,7 @@
 # @hxjg/utils
 
-[![NPM version](https://img.shields.io/npm/v/hxTool.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
-[![NPM downloads](http://img.shields.io/npm/dm/hxTool.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
+[![NPM version](https://img.shields.io/npm/v/@hxjg/utils.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
+[![NPM downloads](http://img.shields.io/npm/dm/@hxjg/utils.svg?style=flat)](https://npmjs.org/package/@hxjg/utils)
 
 hx工具库
 
