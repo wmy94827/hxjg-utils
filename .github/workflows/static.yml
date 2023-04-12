@@ -14,7 +14,7 @@ jobs:
 
       - name: Install and Build # 下载依赖 打包项目
         run: |
-          npm install
+          npm install --legacy-peer-deps 
           npm run docs:build
 
       - name: Deploy # 将打包内容发布到 github page
