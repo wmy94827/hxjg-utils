@@ -20,7 +20,10 @@ export default () => {
   ]);
 
   const onClick = useCallback(() => {
-    const list = hxUtils.flattenTree(treeData, {});
+    const list = hxUtils.flattenTree(treeData, {
+      childrenKey: 'children',
+      keepChildren: false,
+    });
     console.log(list);
   }, [treeData]);
 

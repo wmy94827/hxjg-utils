@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es2017",
     // "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react-jsx",
@@ -13,6 +13,7 @@
       "@hxjg/utils": ["./src/index.ts"],
       "@hxjg/utils/lib/*": ["./src/*"]
     },
+    "types": ["node", "jest"],
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,

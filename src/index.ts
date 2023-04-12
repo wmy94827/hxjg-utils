@@ -1,5 +1,6 @@
+import composeTree from './TreeTool/ComposeTree';
 import flattenTree from './TreeTool/FlattenTree';
 
-const hxUtils = { flattenTree };
+const hxUtils = { flattenTree, composeTree };
 
-export { hxUtils as default, flattenTree };
+export default hxUtils;

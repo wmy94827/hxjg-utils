@@ -22,39 +22,28 @@ export interface FlattenTreeOptions<T extends Record<string, any>> {
  */
 function flattenTree<T extends Record<string, any>>(
   treeData: T[] = [],
-  options: FlattenTreeOptions<T>,
+  options: FlattenTreeOptions<T> = {},
 ): T[] {
   const { childrenKey = 'children', keepChildren = true } = options;
 
   const result: T[] = [];
-
-  // 定义递归函数，用于将节点展开并添加到结果列表中
-  function flatten(node: T) {
-    // 创建一个新节点，复制原节点的所有属性
-    const newNode = { ...node };
+  return treeData.reduce((previousValue, currentValue) => {
+    const curItem = { ...currentValue };
+    const children = currentValue[childrenKey] ?? ([] as T[]);
 
     // 如果不需要展开子节点，则删除子节点属性
     if (!keepChildren) {
-      delete newNode[childrenKey];
+      delete curItem[childrenKey];
     }
 
-    // 将新节点添加到结果列表中
-    result.push(newNode);
-
-    // 递归处理子节点
-    if (node[childrenKey]) {
-      for (const child of node[childrenKey]) {
-        flatten(child);
-      }
-    }
-  }
-
-  // 遍历树的根节点，并递归展开所有节点
-  for (const node of treeData ?? []) {
-    flatten(node);
-  }
-
-  return result;
+    return previousValue.concat(
+      curItem,
+      flattenTree(children, {
+        childrenKey,
+        keepChildren,
+      }),
+    );
+  }, result);
 }
 
 export default flattenTree;
