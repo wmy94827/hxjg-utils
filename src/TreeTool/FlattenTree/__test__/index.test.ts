@@ -128,7 +128,7 @@ describe('flattenTree-树展开', () => {
         id: '2',
       },
     ]);
-    // expect(treeData).toEqual(treeData);
+    expect(treeData).toEqual(treeData);
   });
 
   it('options配置-keepChildren', () => {
@@ -153,5 +153,6 @@ describe('flattenTree-树展开', () => {
         name: 'node2',
       },
     ]);
+    expect(mockTreeData).toEqual(mockTreeData);
   });
 });
