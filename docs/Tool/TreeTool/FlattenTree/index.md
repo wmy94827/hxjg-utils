@@ -34,11 +34,11 @@ const flattenList = flattenTree<T>(treeData, {
 
 | 参数         | 说明                           | 类型      | 默认值     |
 | ------------ | ------------------------------ | --------- | ---------- |
-| childrenKey  | 子节点在节点对象中对应的属性名 | `string`  | `children` |
+| childrenKey  | 子节点在节点对象中对应的属性名 | `keyof T` | `children` |
 | keepChildren | 是否在扁平化数据中保留子项     | `boolean` | `true`     |
 
 ### Result
 
-| 参数        | 说明             | 类型 |
-| ----------- | ---------------- | ---- |
-| flattenList | 扁平化的数据列表 | `T`  |
+| 参数        | 说明             | 类型  |
+| ----------- | ---------------- | ----- |
+| flattenList | 扁平化的数据列表 | `T[]` |

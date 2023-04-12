@@ -1,5 +1,5 @@
 /**
- * 节点对象
+ * 返回节点对象
  */
 type TreeNode<T> = T & {
   children?: TreeNode<T>[];
@@ -7,13 +7,28 @@ type TreeNode<T> = T & {
 };
 
 /**
- * 选项
+ * 配置选项
  */
 interface Options<T extends Record<string, any>> {
-  idKey: keyof T; // id 的键名
-  parentIdKey: keyof T; // 父节点 id 的键名
-  childrenKey?: string; // 子节点的键名，默认为 'children'
-  rootParentIdValue?: T[keyof T]; // 根节点的父节点 id 的值，若不指定则默认为空
+  /**
+   * id 的键名
+   * @default id
+   */
+  idKey?: keyof T;
+  /**
+   * 父节点 id 的键名
+   * @default parentId
+   */
+  parentIdKey?: keyof T;
+  /**
+   * 子节点的键名
+   * @default children
+   */
+  childrenKey?: string;
+  /**
+   * 根节点的父节点 id 的值
+   */
+  rootParentIdValue?: T[keyof T];
 }
 
 /**
@@ -23,12 +38,12 @@ interface Options<T extends Record<string, any>> {
  * @returns 树形结构的根节点数组
  */
 function composeTree<T extends Record<string, any>>(
-  list: T[],
-  options: Options<T>,
+  list: T[] = [],
+  options: Options<T> = {},
 ): TreeNode<T>[] {
   const {
-    idKey, // id 的键名
-    parentIdKey, // 父节点 id 的键名
+    idKey = 'id', // id 的键名
+    parentIdKey = 'parentId', // 父节点 id 的键名
     childrenKey = 'children', // 子节点的键名，默认为 'children'
     rootParentIdValue, // 根节点的父节点 id 的值，若不指定则默认为空
   } = options;

@@ -16,28 +16,31 @@ group:
 ## API
 
 ```typescript
-const flattenList = flattenTree<T>(treeData, {
+const flattenList = composeTree<T>(treeData, {
+  idKey: 'id',
+  parentIdKey: 'parentId',
   childrenKey: 'children',
-  keepChildren: true,
 });
 ```
 
 ### Params
 
-| 参数     | 说明         | 类型      | 默认值 |
-| -------- | ------------ | --------- | ------ |
-| treeData | 树形结构数据 | `T[]`     | `[]`   |
-| options  | 配置项       | `Options` | `-`    |
+| 参数    | 说明           | 类型      | 默认值 |
+| ------- | -------------- | --------- | ------ |
+| list    | 平面结构的数组 | `T[]`     | `[]`   |
+| options | 配置项         | `Options` | `-`    |
 
 ### Options
 
-| 参数         | 说明                           | 类型      | 默认值     |
-| ------------ | ------------------------------ | --------- | ---------- |
-| childrenKey  | 子节点在节点对象中对应的属性名 | `string`  | `children` |
-| keepChildren | 是否在扁平化数据中保留子项     | `boolean` | `true`     |
+| 参数              | 说明                   | 类型         | 默认值     |
+| ----------------- | ---------------------- | ------------ | ---------- |
+| idKey             | id 的键名              | `keyof T`    | `id`       |
+| parentIdKey       | 父节点 id 的键名       | `keyof T`    | `parentId` |
+| childrenKey       | 子节点的键名           | `string`     | `children` |
+| rootParentIdValue | 根节点的父节点 id 的值 | `T[keyof T]` | `-`        |
 
 ### Result
 
-| 参数        | 说明             | 类型 |
-| ----------- | ---------------- | ---- |
-| flattenList | 扁平化的数据列表 | `T`  |
+| 参数     | 说明         | 类型  |
+| -------- | ------------ | ----- |
+| treeData | 树形结构数据 | `T[]` |

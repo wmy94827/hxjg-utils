@@ -1,7 +1,7 @@
 /**
- * 树展开选项
+ * 配置选项
  */
-export interface FlattenTreeOptions<T extends Record<string, any>> {
+interface Options<T extends Record<string, any>> {
   /**
    * 树节点的子节点在节点对象中对应的属性名
    * @default 'children'
@@ -17,12 +17,12 @@ export interface FlattenTreeOptions<T extends Record<string, any>> {
 /**
  * 将指定树的所有节点展开，并返回展开后的节点列表
  * @param treeData 待展开的树
- * @param options 展开选项
+ * @param options 选项
  * @returns 展开后的节点列表
  */
 function flattenTree<T extends Record<string, any>>(
   treeData: T[] = [],
-  options: FlattenTreeOptions<T> = {},
+  options: Options<T> = {},
 ): T[] {
   const { childrenKey = 'children', keepChildren = true } = options;
 

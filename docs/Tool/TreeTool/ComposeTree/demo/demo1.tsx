@@ -1,8 +1,9 @@
 import hxUtils from '@hxjg/utils';
-import React, { useCallback, useState } from 'react';
+import { useMemo, useState } from 'react';
+import ReactJson from 'react-json-view';
 
 export default () => {
-  const [treeData] = useState([
+  const [list] = useState([
     {
       id: '1-1',
       parentId: '1',
@@ -30,23 +31,34 @@ export default () => {
     },
   ]);
 
-  const onClick = useCallback(() => {
-    const list = hxUtils.composeTree(treeData, {
+  const treeData = useMemo(() => {
+    return hxUtils.composeTree(list, {
       idKey: 'id',
       parentIdKey: 'parentId',
-      // childrenKey: 'childList',
-      rootParentIdValue: '2',
       childrenKey: 'childrenList',
     });
-    list.map((val) => val.childrenList);
-    console.log(list, treeData);
-  }, [treeData]);
+  }, [list]);
 
   return (
-    <React.Fragment>
-      <button type="button" onClick={onClick}>
-        转换
-      </button>
-    </React.Fragment>
+    <div
+      style={{
+        display: 'grid',
+        gap: 20,
+        gridTemplateColumns: 'repeat(2, 1fr)',
+      }}
+    >
+      <ReactJson
+        src={list}
+        displayDataTypes={false}
+        displayObjectSize={false}
+        iconStyle="square"
+      />
+      <ReactJson
+        src={treeData}
+        displayDataTypes={false}
+        displayObjectSize={false}
+        iconStyle="square"
+      />
+    </div>
   );
 };

@@ -1,5 +1,6 @@
 import hxUtils from '@hxjg/utils';
-import React, { useCallback, useState } from 'react';
+import { useMemo, useState } from 'react';
+import ReactJson from 'react-json-view';
 
 export default () => {
   const [treeData] = useState([
@@ -8,30 +9,54 @@ export default () => {
       children: [
         {
           id: '1-1',
+          children: [
+            {
+              id: '1-1-1',
+            },
+          ],
         },
       ],
     },
     {
       id: '2',
+      children: [
+        {
+          id: '2-1',
+        },
+      ],
     },
     {
       id: '3',
     },
   ]);
 
-  const onClick = useCallback(() => {
-    const list = hxUtils.flattenTree(treeData, {
+  const list = useMemo(() => {
+    return hxUtils.flattenTree(treeData, {
       childrenKey: 'children',
       keepChildren: false,
     });
-    console.log(list);
   }, [treeData]);
 
   return (
-    <React.Fragment>
-      <button type="button" onClick={onClick}>
-        转换
-      </button>
-    </React.Fragment>
+    <div
+      style={{
+        display: 'grid',
+        gap: 20,
+        gridTemplateColumns: 'repeat(2, 1fr)',
+      }}
+    >
+      <ReactJson
+        src={treeData}
+        displayDataTypes={false}
+        displayObjectSize={false}
+        iconStyle="square"
+      />
+      <ReactJson
+        src={list}
+        displayDataTypes={false}
+        displayObjectSize={false}
+        iconStyle="square"
+      />
+    </div>
   );
 };
