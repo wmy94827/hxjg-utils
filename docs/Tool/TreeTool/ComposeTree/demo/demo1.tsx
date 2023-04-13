@@ -32,11 +32,12 @@ export default () => {
   ]);
 
   const treeData = useMemo(() => {
-    return hxUtils.composeTree(list, {
+    const data = hxUtils.composeTree(list, {
       idKey: 'id',
       parentIdKey: 'parentId',
       childrenKey: 'childrenList',
     });
+    hxUtils.getTreeParentIds(data, 'id');
   }, [list]);
 
   return (

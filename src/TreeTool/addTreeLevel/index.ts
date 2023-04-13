@@ -26,7 +26,7 @@ type TreeNode<T> = T & {
   /**
    * 级别
    */
-  [k in string]: number;
+  level?: number;
 };
 
 /**

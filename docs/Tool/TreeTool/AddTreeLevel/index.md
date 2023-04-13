@@ -43,4 +43,4 @@ const parentIdList = addTreeLevel<T>(treeData, {
 
 | 参数           | 说明                        | 类型                             |
 | -------------- | --------------------------- | -------------------------------- |
-| treeDataResult | 增加了 level 的树形结构数据 | `T[] & {[k in string]: number;}` |
+| treeDataResult | 增加了 level 的树形结构数据 | `T[] & level?: number;}` |
