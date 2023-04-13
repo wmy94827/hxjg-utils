@@ -1,6 +1,6 @@
 {
   "name": "@hxjg/utils",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "hx工具库",
   "repository": {
     "type": "git",
@@ -16,18 +16,18 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
-    "buildPublish": "pnpm run build&&npm publish",
+    "buildPublish": "pnpm run test&&pnpm run build&&npm publish",
     "deploy": "gh-pages -d docs-dist",
     "dev": "dumi dev",
     "docs:build": "dumi build",
     "doctor": "father doctor",
-    "test": "jest",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "jest"
   },
   "commitlint": {
     "extends": [
