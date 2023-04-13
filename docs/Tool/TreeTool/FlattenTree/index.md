@@ -1,5 +1,5 @@
 ---
-title: flattenTree（展开树）
+title: flattenTree
 order: 1
 group:
   title: 树操作方法
